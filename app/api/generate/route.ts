@@ -6,6 +6,29 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const predictionId = searchParams.get('predictionId');
+    const iv = searchParams.get('iv');
+
+    if (!predictionId || !iv) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    return await processPrediction(predictionId, parseFloat(iv));
+  } catch (error) {
+    console.error('Error generating prediction:', error);
+    return NextResponse.json(
+      { error: 'Failed to generate prediction' },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const { predictionId, iv } = await request.json();
@@ -17,46 +40,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // Fetch the prediction
-    const { data: prediction, error: fetchError } = await supabase
-      .from('predictions')
-      .select('*')
-      .eq('id', predictionId)
-      .single();
-
-    if (fetchError) {
-      throw fetchError;
-    }
-
-    // Calculate expected move based on IV
-    const daysToExpiration = Math.ceil(
-      (new Date(prediction.resolution_time).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
-    );
-    const expectedMove = iv * Math.sqrt(daysToExpiration / 365);
-
-    // Update prediction with calculated values
-    const { error: updateError } = await supabase
-      .from('predictions')
-      .update({
-        status: 'approved',
-        iv_used: iv,
-        expected_move: expectedMove,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('id', predictionId);
-
-    if (updateError) {
-      throw updateError;
-    }
-
-    return NextResponse.json({
-      success: true,
-      prediction: {
-        ...prediction,
-        iv_used: iv,
-        expected_move: expectedMove,
-      },
-    });
+    return await processPrediction(predictionId, parseFloat(iv));
   } catch (error) {
     console.error('Error generating prediction:', error);
     return NextResponse.json(
@@ -64,4 +48,47 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
+}
+
+async function processPrediction(predictionId: string, iv: number) {
+  // Fetch the prediction
+  const { data: prediction, error: fetchError } = await supabase
+    .from('predictions')
+    .select('*')
+    .eq('id', predictionId)
+    .single();
+
+  if (fetchError) {
+    throw fetchError;
+  }
+
+  // Calculate expected move based on IV
+  const daysToExpiration = Math.ceil(
+    (new Date(prediction.resolution_time).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
+  );
+  const expectedMove = iv * Math.sqrt(daysToExpiration / 365);
+
+  // Update prediction with calculated values
+  const { error: updateError } = await supabase
+    .from('predictions')
+    .update({
+      status: 'approved',
+      iv_used: iv,
+      expected_move: expectedMove,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', predictionId);
+
+  if (updateError) {
+    throw updateError;
+  }
+
+  return NextResponse.json({
+    success: true,
+    prediction: {
+      ...prediction,
+      iv_used: iv,
+      expected_move: expectedMove,
+    },
+  });
 } 
