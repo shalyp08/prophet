@@ -103,13 +103,22 @@ export default function ControlRoom() {
         throw new Error('Invalid IV value');
       }
 
+      // Log the values being sent
+      console.log('Sending approval request with:', {
+        predictionId: selectedPrediction.id,
+        iv: finalIV
+      });
+
       // Update prediction with IV
       const { error: updateError } = await supabase
         .from('predictions')
         .update({ iv_used: finalIV })
         .eq('id', selectedPrediction.id);
 
-      if (updateError) throw updateError;
+      if (updateError) {
+        console.error('Supabase update error:', updateError);
+        throw new Error('Failed to update prediction with IV');
+      }
 
       // Call generate API
       const response = await fetch('/api/generate', {
@@ -123,9 +132,11 @@ export default function ControlRoom() {
         }),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to generate prediction');
+        console.error('API error response:', data);
+        throw new Error(data.error || 'Failed to generate prediction');
       }
 
       // Show success toast
@@ -137,6 +148,7 @@ export default function ControlRoom() {
       setOverrideIV('');
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to approve prediction';
+      console.error('Approval error:', err);
       setError(errorMessage);
       toast.error(errorMessage);
     } finally {
