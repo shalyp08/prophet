@@ -38,9 +38,18 @@ export async function POST(request: Request) {
 
     console.log('POST request received with:', { predictionId, iv });
 
-    if (!predictionId || !iv) {
+    if (!predictionId) {
+      console.error('Missing predictionId');
       return NextResponse.json(
-        { error: 'Missing required fields: predictionId and iv are required' },
+        { error: 'Missing required field: predictionId' },
+        { status: 400 }
+      );
+    }
+
+    if (!iv) {
+      console.error('Missing iv');
+      return NextResponse.json(
+        { error: 'Missing required field: iv' },
         { status: 400 }
       );
     }
@@ -49,7 +58,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Error in POST /api/generate:', error);
     return NextResponse.json(
-      { error: 'Failed to generate prediction' },
+      { error: error instanceof Error ? error.message : 'Failed to generate prediction' },
       { status: 500 }
     );
   }
@@ -59,6 +68,7 @@ async function processPrediction(predictionId: string, iv: number) {
   console.log('Processing prediction:', { predictionId, iv });
 
   // Fetch the prediction
+  console.log('Fetching prediction from Supabase...');
   const { data: prediction, error: fetchError } = await supabase
     .from('predictions')
     .select('*')
@@ -67,12 +77,18 @@ async function processPrediction(predictionId: string, iv: number) {
 
   if (fetchError) {
     console.error('Error fetching prediction:', fetchError);
-    throw new Error('Failed to fetch prediction');
+    throw new Error(`Failed to fetch prediction: ${fetchError.message}`);
   }
 
   if (!prediction) {
     console.error('Prediction not found:', predictionId);
-    throw new Error('Prediction not found');
+    throw new Error(`Prediction not found: ${predictionId}`);
+  }
+
+  // Validate prediction data
+  if (!prediction.resolution_time) {
+    console.error('Missing resolution_time in prediction:', prediction);
+    throw new Error('Prediction is missing resolution_time');
   }
 
   // Calculate expected move based on IV
@@ -84,10 +100,12 @@ async function processPrediction(predictionId: string, iv: number) {
   console.log('Calculated values:', {
     daysToExpiration,
     expectedMove,
-    resolutionTime: prediction.resolution_time
+    resolutionTime: prediction.resolution_time,
+    currentTime: new Date().toISOString()
   });
 
   // Update prediction with calculated values
+  console.log('Updating prediction in Supabase...');
   const { error: updateError } = await supabase
     .from('predictions')
     .update({
@@ -100,9 +118,10 @@ async function processPrediction(predictionId: string, iv: number) {
 
   if (updateError) {
     console.error('Error updating prediction:', updateError);
-    throw new Error('Failed to update prediction');
+    throw new Error(`Failed to update prediction: ${updateError.message}`);
   }
 
+  console.log('Prediction updated successfully');
   return NextResponse.json({
     success: true,
     prediction: {

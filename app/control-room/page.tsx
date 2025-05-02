@@ -84,11 +84,15 @@ export default function ControlRoom() {
   };
 
   const handleApprove = async () => {
-    if (!selectedPrediction) return;
+    if (!selectedPrediction) {
+      console.error('No prediction selected');
+      return;
+    }
 
     // Validate the prediction
     const errors = validatePrediction(selectedPrediction);
     if (Object.keys(errors).length > 0) {
+      console.error('Validation errors:', errors);
       setValidationErrors(errors);
       return;
     }
@@ -98,18 +102,23 @@ export default function ControlRoom() {
     setValidationErrors({});
 
     try {
+      console.log('Starting approval process for prediction:', selectedPrediction.id);
+      
       const finalIV = parseFloat(overrideIV);
       if (isNaN(finalIV)) {
+        console.error('Invalid IV value:', overrideIV);
         throw new Error('Invalid IV value');
       }
 
       // Log the values being sent
       console.log('Sending approval request with:', {
         predictionId: selectedPrediction.id,
-        iv: finalIV
+        iv: finalIV,
+        prediction: selectedPrediction
       });
 
       // Update prediction with IV
+      console.log('Updating prediction in Supabase...');
       const { error: updateError } = await supabase
         .from('predictions')
         .update({ iv_used: finalIV })
@@ -117,10 +126,11 @@ export default function ControlRoom() {
 
       if (updateError) {
         console.error('Supabase update error:', updateError);
-        throw new Error('Failed to update prediction with IV');
+        throw new Error(`Failed to update prediction with IV: ${updateError.message}`);
       }
 
       // Call generate API
+      console.log('Calling generate API...');
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: {
@@ -132,7 +142,9 @@ export default function ControlRoom() {
         }),
       });
 
+      console.log('API response status:', response.status);
       const data = await response.json();
+      console.log('API response data:', data);
 
       if (!response.ok) {
         console.error('API error response:', data);
@@ -143,6 +155,7 @@ export default function ControlRoom() {
       toast.success('Prediction approved successfully!');
 
       // Refresh predictions
+      console.log('Refreshing predictions list...');
       await fetchPendingPredictions();
       setSelectedPrediction(null);
       setOverrideIV('');
