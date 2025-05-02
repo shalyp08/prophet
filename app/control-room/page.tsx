@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { TradierService } from '@/lib/services/tradier';
 import { createClient } from '@supabase/supabase-js';
+import { toast } from 'react-hot-toast';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -16,6 +17,16 @@ interface Prediction {
   headline: string;
   narrative: string;
   iv_used?: number;
+  bullish_pct: number;
+  bearish_pct: number;
+}
+
+interface ValidationErrors {
+  ticker?: string;
+  resolution_time?: string;
+  bullish_pct?: string;
+  bearish_pct?: string;
+  iv?: string;
 }
 
 export default function ControlRoom() {
@@ -25,6 +36,7 @@ export default function ControlRoom() {
   const [overrideIV, setOverrideIV] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
 
   useEffect(() => {
     fetchPendingPredictions();
@@ -35,6 +47,32 @@ export default function ControlRoom() {
       fetchMarketIV();
     }
   }, [selectedPrediction]);
+
+  const validatePrediction = (prediction: Prediction): ValidationErrors => {
+    const errors: ValidationErrors = {};
+    
+    if (!prediction.ticker) {
+      errors.ticker = 'Ticker is required';
+    }
+    
+    if (!prediction.resolution_time) {
+      errors.resolution_time = 'Resolution time is required';
+    }
+    
+    if (prediction.bullish_pct === undefined || prediction.bullish_pct === null) {
+      errors.bullish_pct = 'Bullish percentage is required';
+    }
+    
+    if (prediction.bearish_pct === undefined || prediction.bearish_pct === null) {
+      errors.bearish_pct = 'Bearish percentage is required';
+    }
+    
+    if (!marketIV && !overrideIV) {
+      errors.iv = 'Either market IV or override IV is required';
+    }
+    
+    return errors;
+  };
 
   const fetchPendingPredictions = async () => {
     try {
@@ -81,8 +119,16 @@ export default function ControlRoom() {
   const handleApprove = async () => {
     if (!selectedPrediction) return;
 
+    // Validate the prediction
+    const errors = validatePrediction(selectedPrediction);
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
+    setValidationErrors({});
 
     try {
       const finalIV = overrideIV ? parseFloat(overrideIV) : marketIV;
@@ -111,8 +157,12 @@ export default function ControlRoom() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to generate prediction');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to generate prediction');
       }
+
+      // Show success toast
+      toast.success('Prediction approved successfully!');
 
       // Refresh predictions
       await fetchPendingPredictions();
@@ -120,8 +170,9 @@ export default function ControlRoom() {
       setMarketIV(null);
       setOverrideIV('');
     } catch (err) {
-      setError('Failed to approve prediction');
-      console.error(err);
+      const errorMessage = err instanceof Error ? err.message : 'Failed to approve prediction';
+      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -132,17 +183,8 @@ export default function ControlRoom() {
       <h1 className="text-2xl font-bold mb-6">Control Room</h1>
 
       {error && (
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
-          <div className="flex">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm text-red-700">{error}</p>
-            </div>
-          </div>
+        <div className="mb-4 p-4 bg-red-50 text-red-700 rounded-md">
+          {error}
         </div>
       )}
 
@@ -176,6 +218,9 @@ export default function ControlRoom() {
                   Ticker
                 </label>
                 <div className="mt-1">{selectedPrediction.ticker}</div>
+                {validationErrors.ticker && (
+                  <p className="mt-1 text-sm text-red-600">{validationErrors.ticker}</p>
+                )}
               </div>
 
               <div>
@@ -183,6 +228,9 @@ export default function ControlRoom() {
                   Resolution Time
                 </label>
                 <div className="mt-1">{selectedPrediction.resolution_time}</div>
+                {validationErrors.resolution_time && (
+                  <p className="mt-1 text-sm text-red-600">{validationErrors.resolution_time}</p>
+                )}
               </div>
 
               <div>
@@ -197,6 +245,26 @@ export default function ControlRoom() {
                   Narrative
                 </label>
                 <div className="mt-1">{selectedPrediction.narrative}</div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Bullish Percentage
+                </label>
+                <div className="mt-1">{selectedPrediction.bullish_pct}%</div>
+                {validationErrors.bullish_pct && (
+                  <p className="mt-1 text-sm text-red-600">{validationErrors.bullish_pct}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Bearish Percentage
+                </label>
+                <div className="mt-1">{selectedPrediction.bearish_pct}%</div>
+                {validationErrors.bearish_pct && (
+                  <p className="mt-1 text-sm text-red-600">{validationErrors.bearish_pct}</p>
+                )}
               </div>
 
               <div>
@@ -228,12 +296,15 @@ export default function ControlRoom() {
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   placeholder="Enter custom IV %"
                 />
+                {validationErrors.iv && (
+                  <p className="mt-1 text-sm text-red-600">{validationErrors.iv}</p>
+                )}
               </div>
 
               <button
                 onClick={handleApprove}
-                disabled={isLoading}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+                disabled={isLoading || Object.keys(validationErrors).length > 0}
+                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? 'Processing...' : 'Approve'}
               </button>
