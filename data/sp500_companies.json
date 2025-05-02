@@ -1,0 +1,578 @@
+[
+  {
+    "ticker": "AAPL",
+    "name_variants": ["Apple", "AAPL", "Apple Inc.", "iPhone", "Mac", "iPad", "iOS", "App Store", "Tim Cook", "Vision Pro", "Apple Watch", "AirPods", "iCloud", "Apple TV"]
+  },
+  {
+    "ticker": "MSFT",
+    "name_variants": ["Microsoft", "MSFT", "Microsoft Corp", "Windows", "Azure", "Xbox", "Office", "Teams", "Satya Nadella", "Surface", "LinkedIn", "GitHub", "PowerPoint", "Excel"]
+  },
+  {
+    "ticker": "AMZN",
+    "name_variants": ["Amazon", "AMZN", "Amazon.com", "AWS", "Prime", "Alexa", "Echo", "Whole Foods", "Jeff Bezos", "Andy Jassy", "Amazon Web Services", "Kindle", "Amazon Prime", "Amazon Fresh"]
+  },
+  {
+    "ticker": "NVDA",
+    "name_variants": ["NVIDIA", "NVDA", "GPU", "AI chips", "Graphics", "CUDA", "RTX", "DLSS", "Jensen Huang", "GeForce", "Quadro", "Tegra", "AI", "Deep Learning"]
+  },
+  {
+    "ticker": "GOOGL",
+    "name_variants": ["Google", "GOOGL", "Alphabet", "YouTube", "Search", "Android", "Chrome", "Pixel", "Sundar Pichai", "Gmail", "Google Cloud", "Waymo", "Google Maps", "Google Drive"]
+  },
+  {
+    "ticker": "META",
+    "name_variants": ["Meta", "META", "Facebook", "Instagram", "WhatsApp", "Oculus", "Reels", "Threads", "Mark Zuckerberg", "Meta Quest", "Horizon Worlds", "Messenger", "Meta AI"]
+  },
+  {
+    "ticker": "BRK.B",
+    "name_variants": ["Berkshire Hathaway", "BRK.B", "Warren Buffett", "Charlie Munger", "Insurance", "Railroad", "BNSF", "Geico", "Berkshire", "Buffett", "Munger"]
+  },
+  {
+    "ticker": "TSLA",
+    "name_variants": ["Tesla", "TSLA", "Elon Musk", "Model 3", "Model Y", "Cybertruck", "Gigafactory", "Autopilot", "Model S", "Model X", "Tesla Energy", "Powerwall", "Supercharger"]
+  },
+  {
+    "ticker": "UNH",
+    "name_variants": ["UnitedHealth", "UNH", "Healthcare", "Insurance", "Optum", "Medicare", "Medicaid", "UnitedHealthcare", "Health Insurance", "Medical", "Pharmacy"]
+  },
+  {
+    "ticker": "JNJ",
+    "name_variants": ["Johnson & Johnson", "JNJ", "Pharmaceutical", "Healthcare", "Medical", "Vaccine", "Tylenol", "Band-Aid", "Janssen", "Neutrogena", "Aveeno", "Johnson's"]
+  },
+  {
+    "ticker": "XOM",
+    "name_variants": ["Exxon Mobil", "XOM", "Oil", "Energy", "Gas", "Petroleum", "Refinery", "Exxon", "Mobil", "Esso", "Fossil Fuel", "Energy Company"]
+  },
+  {
+    "ticker": "V",
+    "name_variants": ["Visa", "V", "Credit card", "Payment", "Debit", "Fintech", "Digital wallet", "Visa Inc", "Payment Processing", "Financial Services", "Digital Payment"]
+  },
+  {
+    "ticker": "JPM",
+    "name_variants": ["JPMorgan", "JPM", "Chase", "Bank", "Financial", "Jamie Dimon", "Investment", "JPMorgan Chase", "Banking", "Financial Services", "Investment Bank"]
+  },
+  {
+    "ticker": "WMT",
+    "name_variants": ["Walmart", "WMT", "Retail", "Store", "Sam's Club", "Walmart+", "E-commerce", "Supermarket", "Grocery", "Retail Store", "Walmart Inc"]
+  },
+  {
+    "ticker": "MA",
+    "name_variants": ["Mastercard", "MA", "Credit card", "Payment", "Fintech", "Digital payment", "MasterCard", "Payment Processing", "Financial Services", "Digital Wallet"]
+  },
+  {
+    "ticker": "PG",
+    "name_variants": ["Procter & Gamble", "PG", "Consumer goods", "Pampers", "Tide", "Gillette", "P&G", "Household Products", "Personal Care", "Consumer Products"]
+  },
+  {
+    "ticker": "HD",
+    "name_variants": ["Home Depot", "HD", "Hardware", "Home improvement", "DIY", "Contractor", "Home Improvement", "Hardware Store", "Building Materials", "Home Depot Inc"]
+  },
+  {
+    "ticker": "CVX",
+    "name_variants": ["Chevron", "CVX", "Oil", "Energy", "Gas", "Petroleum", "Refinery", "Chevron Corporation", "Fossil Fuel", "Energy Company", "Oil Company"]
+  },
+  {
+    "ticker": "MRK",
+    "name_variants": ["Merck", "MRK", "Pharmaceutical", "Healthcare", "Vaccine", "Drug", "Medicine", "Merck & Co", "Pharmaceutical Company", "Healthcare Company"]
+  },
+  {
+    "ticker": "KO",
+    "name_variants": ["Coca-Cola", "KO", "Beverage", "Drink", "Soda", "Fanta", "Sprite", "Coke", "Soft Drink", "Beverage Company", "Coca-Cola Company"]
+  },
+  {
+    "ticker": "ABBV",
+    "name_variants": ["AbbVie", "ABBV", "Pharmaceutical", "Healthcare", "Humira", "Immunology", "Biopharmaceutical", "Drug Company", "Healthcare Company"]
+  },
+  {
+    "ticker": "PEP",
+    "name_variants": ["PepsiCo", "PEP", "Beverage", "Frito-Lay", "Gatorade", "Quaker", "Snacks", "Pepsi", "Food and Beverage", "Snack Company", "PepsiCo Inc"]
+  },
+  {
+    "ticker": "AVGO",
+    "name_variants": ["Broadcom", "AVGO", "Semiconductor", "Chip", "Networking", "Software", "Broadcom Inc", "Technology Company", "Chip Manufacturer"]
+  },
+  {
+    "ticker": "TMO",
+    "name_variants": ["Thermo Fisher", "TMO", "Scientific", "Healthcare", "Laboratory", "Research", "Thermo Fisher Scientific", "Life Sciences", "Scientific Equipment"]
+  },
+  {
+    "ticker": "COST",
+    "name_variants": ["Costco", "COST", "Retail", "Wholesale", "Warehouse", "Membership", "Costco Wholesale", "Warehouse Club", "Retail Store", "Wholesale Club"]
+  },
+  {
+    "ticker": "CSCO",
+    "name_variants": ["Cisco", "CSCO", "Networking", "Technology", "Webex", "Security", "Routers", "Cisco Systems", "Network Equipment", "IT Company"]
+  },
+  {
+    "ticker": "DIS",
+    "name_variants": ["Disney", "DIS", "Entertainment", "ESPN", "Marvel", "Star Wars", "Parks", "Disney World", "Disneyland", "Disney Plus", "Walt Disney"]
+  },
+  {
+    "ticker": "ACN",
+    "name_variants": ["Accenture", "ACN", "Consulting", "Technology", "Digital", "Services", "Accenture PLC", "Consulting Firm", "IT Services", "Professional Services"]
+  },
+  {
+    "ticker": "MCD",
+    "name_variants": ["McDonald's", "MCD", "Fast food", "Restaurant", "Burger", "Franchise", "McDonald's Corp", "Fast Food Chain", "Restaurant Chain"]
+  },
+  {
+    "ticker": "ABT",
+    "name_variants": ["Abbott", "ABT", "Healthcare", "Medical", "Diagnostics", "Nutrition", "Abbott Laboratories", "Medical Devices", "Healthcare Company"]
+  },
+  {
+    "ticker": "VZ",
+    "name_variants": ["Verizon", "VZ", "Telecom", "Wireless", "5G", "Internet", "Fios", "Verizon Communications", "Telecommunications", "Wireless Provider"]
+  },
+  {
+    "ticker": "WFC",
+    "name_variants": ["Wells Fargo", "WFC", "Bank", "Financial", "Mortgage", "Credit", "Wells Fargo & Co", "Banking", "Financial Services", "Banking Company"]
+  },
+  {
+    "ticker": "CRM",
+    "name_variants": ["Salesforce", "CRM", "Software", "Cloud", "SaaS", "Marc Benioff", "Salesforce.com", "Cloud Computing", "Business Software", "CRM Software"]
+  },
+  {
+    "ticker": "BAC",
+    "name_variants": ["Bank of America", "BAC", "Banking", "Financial", "Merrill Lynch", "Credit", "Bank of America Corp", "Financial Services", "Banking Company"]
+  },
+  {
+    "ticker": "INTC",
+    "name_variants": ["Intel", "INTC", "Chip", "Processor", "CPU", "Semiconductor", "Foundry", "Intel Corporation", "Chip Manufacturer", "Technology Company"]
+  },
+  {
+    "ticker": "LIN",
+    "name_variants": ["Linde", "LIN", "Industrial", "Gas", "Chemical", "Engineering", "Linde PLC", "Industrial Gases", "Chemical Company", "Engineering Company"]
+  },
+  {
+    "ticker": "AMD",
+    "name_variants": ["AMD", "Advanced Micro Devices", "Semiconductor", "CPU", "GPU", "Lisa Su", "AMD Inc", "Chip Manufacturer", "Technology Company", "Processor"]
+  },
+  {
+    "ticker": "PFE",
+    "name_variants": ["Pfizer", "PFE", "Pharmaceutical", "Vaccine", "Drug", "Medicine", "COVID", "Pfizer Inc", "Pharmaceutical Company", "Healthcare Company"]
+  },
+  {
+    "ticker": "NFLX",
+    "name_variants": ["Netflix", "NFLX", "Streaming", "Entertainment", "Movies", "Series", "Netflix Inc", "Streaming Service", "Entertainment Company"]
+  },
+  {
+    "ticker": "TXN",
+    "name_variants": ["Texas Instruments", "TXN", "Semiconductor", "Chip", "Analog", "Digital", "TI", "Chip Manufacturer", "Technology Company", "Semiconductor Company"]
+  },
+  {
+    "ticker": "DHR",
+    "name_variants": ["Danaher", "DHR", "Science", "Technology", "Healthcare", "Life Sciences", "Danaher Corporation", "Life Sciences Company", "Technology Company"]
+  },
+  {
+    "ticker": "NKE",
+    "name_variants": ["Nike", "NKE", "Sportswear", "Shoes", "Apparel", "Athletic", "Nike Inc", "Sports Apparel", "Footwear", "Sporting Goods"]
+  },
+  {
+    "ticker": "PM",
+    "name_variants": ["Philip Morris", "PM", "Tobacco", "Cigarettes", "IQOS", "Smoke-free", "Philip Morris International", "Tobacco Company", "Cigarette Manufacturer"]
+  },
+  {
+    "ticker": "RTX",
+    "name_variants": ["Raytheon", "RTX", "Defense", "Aerospace", "Technology", "Military", "Raytheon Technologies", "Defense Contractor", "Aerospace Company"]
+  },
+  {
+    "ticker": "ORCL",
+    "name_variants": ["Oracle", "ORCL", "Database", "Cloud", "Software", "Larry Ellison", "Oracle Corporation", "Software Company", "Database Software", "Cloud Computing"]
+  },
+  {
+    "ticker": "HON",
+    "name_variants": ["Honeywell", "HON", "Industrial", "Technology", "Aerospace", "Automation", "Honeywell International", "Industrial Company", "Technology Company"]
+  },
+  {
+    "ticker": "LOW",
+    "name_variants": ["Lowe's", "LOW", "Home improvement", "Hardware", "Retail", "Contractor", "Lowe's Companies", "Home Improvement", "Hardware Store", "Retail Store"]
+  },
+  {
+    "ticker": "UNP",
+    "name_variants": ["Union Pacific", "UNP", "Railroad", "Transportation", "Freight", "Logistics", "Union Pacific Railroad", "Railroad Company", "Transportation Company"]
+  },
+  {
+    "ticker": "UPS",
+    "name_variants": ["UPS", "United Parcel Service", "Shipping", "Logistics", "Delivery", "Package", "UPS Inc", "Shipping Company", "Logistics Company", "Package Delivery"]
+  },
+  {
+    "ticker": "BMY",
+    "name_variants": ["Bristol-Myers", "BMY", "Pharmaceutical", "Healthcare", "Drug", "Medicine", "Bristol-Myers Squibb", "Pharmaceutical Company", "Healthcare Company"]
+  },
+  {
+    "ticker": "COP",
+    "name_variants": ["ConocoPhillips", "COP", "Oil", "Energy", "Gas", "Petroleum", "ConocoPhillips Company", "Oil Company", "Energy Company", "Fossil Fuel"]
+  },
+  {
+    "ticker": "T",
+    "name_variants": ["AT&T", "T", "Telecom", "Wireless", "Internet", "HBO", "WarnerMedia", "AT&T Inc", "Telecommunications", "Wireless Provider", "Media Company"]
+  },
+  {
+    "ticker": "LMT",
+    "name_variants": ["Lockheed Martin", "LMT", "Defense", "Aerospace", "Military", "Technology", "Lockheed Martin Corporation", "Defense Contractor", "Aerospace Company"]
+  },
+  {
+    "ticker": "IBM",
+    "name_variants": ["IBM", "International Business Machines", "Technology", "Cloud", "AI", "Watson", "IBM Corporation", "Technology Company", "IT Services", "Cloud Computing"]
+  },
+  {
+    "ticker": "CAT",
+    "name_variants": ["Caterpillar", "CAT", "Construction", "Equipment", "Mining", "Machinery", "Caterpillar Inc", "Construction Equipment", "Heavy Machinery", "Industrial Equipment"]
+  },
+  {
+    "ticker": "GS",
+    "name_variants": ["Goldman Sachs", "GS", "Investment", "Bank", "Financial", "Wall Street", "Goldman Sachs Group", "Investment Bank", "Financial Services", "Banking Company"]
+  },
+  {
+    "ticker": "BA",
+    "name_variants": ["Boeing", "BA", "Aerospace", "Airplane", "Defense", "737", "787", "Boeing Company", "Aerospace Company", "Airplane Manufacturer", "Defense Contractor"]
+  },
+  {
+    "ticker": "AMAT",
+    "name_variants": ["Applied Materials", "AMAT", "Semiconductor", "Equipment", "Chip", "Technology", "Applied Materials Inc", "Semiconductor Equipment", "Technology Company"]
+  },
+  {
+    "ticker": "DE",
+    "name_variants": ["Deere", "DE", "John Deere", "Agriculture", "Equipment", "Tractor", "Deere & Company", "Agricultural Equipment", "Farm Equipment", "Heavy Machinery"]
+  },
+  {
+    "ticker": "SBUX",
+    "name_variants": ["Starbucks", "SBUX", "Coffee", "Cafe", "Retail", "Food", "Starbucks Corporation", "Coffee Chain", "Restaurant Chain", "Food Service"]
+  },
+  {
+    "ticker": "GE",
+    "name_variants": ["General Electric", "GE", "Industrial", "Technology", "Aviation", "Healthcare", "GE", "Industrial Company", "Technology Company", "Conglomerate"]
+  },
+  {
+    "ticker": "MS",
+    "name_variants": ["Morgan Stanley", "MS", "Investment", "Bank", "Financial", "Wall Street", "Morgan Stanley", "Investment Bank", "Financial Services", "Banking Company"]
+  },
+  {
+    "ticker": "NOW",
+    "name_variants": ["ServiceNow", "NOW", "Software", "Cloud", "IT", "Service Management", "ServiceNow Inc", "Software Company", "Cloud Computing", "IT Services"]
+  },
+  {
+    "ticker": "ADP",
+    "name_variants": ["ADP", "Automatic Data Processing", "Payroll", "HR", "Business Services", "ADP Inc", "Payroll Services", "HR Services", "Business Process Outsourcing"]
+  },
+  {
+    "ticker": "ISRG",
+    "name_variants": ["Intuitive Surgical", "ISRG", "Medical", "Robotics", "Surgery", "Healthcare", "Intuitive Surgical Inc", "Medical Devices", "Robotic Surgery", "Healthcare Technology"]
+  },
+  {
+    "ticker": "SYK",
+    "name_variants": ["Stryker", "SYK", "Medical", "Healthcare", "Equipment", "Surgery", "Stryker Corporation", "Medical Devices", "Healthcare Equipment", "Surgical Equipment"]
+  },
+  {
+    "ticker": "MDT",
+    "name_variants": ["Medtronic", "MDT", "Medical", "Healthcare", "Device", "Technology", "Medtronic PLC", "Medical Devices", "Healthcare Technology", "Medical Equipment"]
+  },
+  {
+    "ticker": "BLK",
+    "name_variants": ["BlackRock", "BLK", "Investment", "Asset Management", "ETF", "iShares", "BlackRock Inc", "Asset Management", "Investment Management", "Financial Services"]
+  },
+  {
+    "ticker": "AMGN",
+    "name_variants": ["Amgen", "AMGN", "Biotechnology", "Pharmaceutical", "Healthcare", "Drug", "Amgen Inc", "Biotechnology Company", "Pharmaceutical Company", "Healthcare Company"]
+  },
+  {
+    "ticker": "SCHW",
+    "name_variants": ["Charles Schwab", "SCHW", "Investment", "Brokerage", "Financial", "Trading", "Charles Schwab Corporation", "Investment Services", "Brokerage Firm", "Financial Services"]
+  },
+  {
+    "ticker": "CI",
+    "name_variants": ["Cigna", "CI", "Healthcare", "Insurance", "Pharmacy", "Medical", "Cigna Corporation", "Health Insurance", "Healthcare Services", "Insurance Company"]
+  },
+  {
+    "ticker": "VRTX",
+    "name_variants": ["Vertex", "VRTX", "Biotechnology", "Pharmaceutical", "Healthcare", "Drug", "Vertex Pharmaceuticals", "Biotechnology Company", "Pharmaceutical Company", "Healthcare Company"]
+  },
+  {
+    "ticker": "AXP",
+    "name_variants": ["American Express", "AXP", "Credit card", "Financial", "Payment", "Travel", "American Express Company", "Financial Services", "Credit Card Company", "Payment Services"]
+  },
+  {
+    "ticker": "PGR",
+    "name_variants": ["Progressive", "PGR", "Insurance", "Auto", "Home", "Financial", "Progressive Corporation", "Insurance Company", "Auto Insurance", "Property Insurance"]
+  },
+  {
+    "ticker": "MU",
+    "name_variants": ["Micron", "MU", "Semiconductor", "Memory", "DRAM", "NAND", "Micron Technology", "Memory Chips", "Semiconductor Company", "Technology Company"]
+  },
+  {
+    "ticker": "BKNG",
+    "name_variants": ["Booking", "BKNG", "Travel", "Hotel", "Reservation", "Priceline", "Booking Holdings", "Travel Services", "Online Travel", "Hotel Booking"]
+  },
+  {
+    "ticker": "ADBE",
+    "name_variants": ["Adobe", "ADBE", "Software", "Creative", "Photoshop", "PDF", "Adobe Inc", "Software Company", "Creative Software", "Digital Media"]
+  },
+  {
+    "ticker": "CMCSA",
+    "name_variants": ["Comcast", "CMCSA", "Cable", "Internet", "NBC", "Universal", "Comcast Corporation", "Cable Company", "Media Company", "Internet Service Provider"]
+  },
+  {
+    "ticker": "INTU",
+    "name_variants": ["Intuit", "INTU", "Software", "Tax", "QuickBooks", "TurboTax", "Intuit Inc", "Financial Software", "Tax Software", "Accounting Software"]
+  },
+  {
+    "ticker": "PLD",
+    "name_variants": ["Prologis", "PLD", "Real Estate", "Warehouse", "Logistics", "Industrial", "Prologis Inc", "Real Estate Investment Trust", "Industrial Real Estate", "Warehouse REIT"]
+  },
+  {
+    "ticker": "TGT",
+    "name_variants": ["Target", "TGT", "Retail", "Store", "E-commerce", "Supermarket", "Target Corporation", "Retail Store", "Department Store", "Retail Chain"]
+  },
+  {
+    "ticker": "LRCX",
+    "name_variants": ["Lam Research", "LRCX", "Semiconductor", "Equipment", "Chip", "Technology", "Lam Research Corporation", "Semiconductor Equipment", "Technology Company"]
+  },
+  {
+    "ticker": "ELV",
+    "name_variants": ["Elevance Health", "ELV", "Healthcare", "Insurance", "Medical", "Anthem", "Elevance Health Inc", "Health Insurance", "Healthcare Services", "Insurance Company"]
+  },
+  {
+    "ticker": "ADI",
+    "name_variants": ["Analog Devices", "ADI", "Semiconductor", "Chip", "Analog", "Digital", "Analog Devices Inc", "Semiconductor Company", "Chip Manufacturer", "Technology Company"]
+  },
+  {
+    "ticker": "PANW",
+    "name_variants": ["Palo Alto Networks", "PANW", "Cybersecurity", "Security", "Network", "Firewall", "Palo Alto Networks Inc", "Cybersecurity Company", "Network Security", "Security Software"]
+  },
+  {
+    "ticker": "REGN",
+    "name_variants": ["Regeneron", "REGN", "Biotechnology", "Pharmaceutical", "Healthcare", "Drug", "Regeneron Pharmaceuticals", "Biotechnology Company", "Pharmaceutical Company", "Healthcare Company"]
+  },
+  {
+    "ticker": "MMC",
+    "name_variants": ["Marsh & McLennan", "MMC", "Insurance", "Consulting", "Risk", "Professional Services", "Marsh & McLennan Companies", "Insurance Broker", "Consulting Firm", "Professional Services"]
+  },
+  {
+    "ticker": "SNPS",
+    "name_variants": ["Synopsys", "SNPS", "Software", "Semiconductor", "EDA", "Design", "Synopsys Inc", "Software Company", "Semiconductor Design", "EDA Software"]
+  },
+  {
+    "ticker": "CDNS",
+    "name_variants": ["Cadence", "CDNS", "Software", "Semiconductor", "EDA", "Design", "Cadence Design Systems", "Software Company", "Semiconductor Design", "EDA Software"]
+  },
+  {
+    "ticker": "MDLZ",
+    "name_variants": ["Mondelez", "MDLZ", "Food", "Snacks", "Oreo", "Cadbury", "Mondelez International", "Food Company", "Snack Company", "Confectionery"]
+  },
+  {
+    "ticker": "GILD",
+    "name_variants": ["Gilead", "GILD", "Biotechnology", "Pharmaceutical", "Healthcare", "Drug", "Gilead Sciences", "Biotechnology Company", "Pharmaceutical Company", "Healthcare Company"]
+  },
+  {
+    "ticker": "TJX",
+    "name_variants": ["TJX", "TJ Maxx", "Retail", "Store", "Marshalls", "HomeGoods", "TJX Companies", "Retail Store", "Department Store", "Off-Price Retailer"]
+  },
+  {
+    "ticker": "CSX",
+    "name_variants": ["CSX", "Railroad", "Transportation", "Freight", "Logistics", "CSX Corporation", "Railroad Company", "Transportation Company", "Freight Rail"]
+  },
+  {
+    "ticker": "CME",
+    "name_variants": ["CME Group", "CME", "Exchange", "Futures", "Options", "Trading", "CME Group Inc", "Financial Exchange", "Derivatives Exchange", "Trading Platform"]
+  },
+  {
+    "ticker": "BDX",
+    "name_variants": ["Becton Dickinson", "BDX", "Medical", "Healthcare", "Device", "Technology", "Becton Dickinson and Company", "Medical Devices", "Healthcare Equipment", "Medical Technology"]
+  },
+  {
+    "ticker": "KLAC",
+    "name_variants": ["KLA", "KLAC", "Semiconductor", "Equipment", "Chip", "Technology", "KLA Corporation", "Semiconductor Equipment", "Technology Company", "Chip Manufacturing"]
+  },
+  {
+    "ticker": "AON",
+    "name_variants": ["Aon", "AON", "Insurance", "Consulting", "Risk", "Professional Services", "Aon PLC", "Insurance Broker", "Risk Management", "Professional Services"]
+  },
+  {
+    "ticker": "SHW",
+    "name_variants": ["Sherwin-Williams", "SHW", "Paint", "Coating", "Chemical", "Retail", "Sherwin-Williams Company", "Paint Company", "Chemical Company", "Retail Store"]
+  },
+  {
+    "ticker": "MO",
+    "name_variants": ["Altria", "MO", "Tobacco", "Cigarettes", "Philip Morris USA", "Smoke-free", "Altria Group", "Tobacco Company", "Cigarette Manufacturer", "Tobacco Products"]
+  },
+  {
+    "ticker": "ICE",
+    "name_variants": ["Intercontinental Exchange", "ICE", "Exchange", "Financial", "Trading", "NYSE", "Intercontinental Exchange Inc", "Financial Exchange", "Trading Platform", "Stock Exchange"]
+  },
+  {
+    "ticker": "SO",
+    "name_variants": ["Southern Company", "SO", "Utility", "Energy", "Electric", "Gas", "Southern Company", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "DUK",
+    "name_variants": ["Duke Energy", "DUK", "Utility", "Energy", "Electric", "Gas", "Duke Energy Corporation", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "NEE",
+    "name_variants": ["NextEra Energy", "NEE", "Utility", "Energy", "Renewable", "Solar", "NextEra Energy Inc", "Electric Utility", "Renewable Energy", "Energy Company"]
+  },
+  {
+    "ticker": "D",
+    "name_variants": ["Dominion Energy", "D", "Utility", "Energy", "Electric", "Gas", "Dominion Energy Inc", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "EXC",
+    "name_variants": ["Exelon", "EXC", "Utility", "Energy", "Electric", "Nuclear", "Exelon Corporation", "Electric Utility", "Energy Company", "Nuclear Power"]
+  },
+  {
+    "ticker": "SRE",
+    "name_variants": ["Sempra Energy", "SRE", "Utility", "Energy", "Electric", "Gas", "Sempra Energy", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "AEP",
+    "name_variants": ["American Electric Power", "AEP", "Utility", "Energy", "Electric", "American Electric Power Company", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "PEG",
+    "name_variants": ["Public Service Enterprise", "PEG", "Utility", "Energy", "Electric", "Gas", "Public Service Enterprise Group", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "WEC",
+    "name_variants": ["WEC Energy", "WEC", "Utility", "Energy", "Electric", "Gas", "WEC Energy Group", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "ED",
+    "name_variants": ["Consolidated Edison", "ED", "Utility", "Energy", "Electric", "Gas", "Consolidated Edison Inc", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "EIX",
+    "name_variants": ["Edison International", "EIX", "Utility", "Energy", "Electric", "Edison International", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "XEL",
+    "name_variants": ["Xcel Energy", "XEL", "Utility", "Energy", "Electric", "Gas", "Xcel Energy Inc", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "FE",
+    "name_variants": ["FirstEnergy", "FE", "Utility", "Energy", "Electric", "FirstEnergy Corp", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "PPL",
+    "name_variants": ["PPL", "Utility", "Energy", "Electric", "Gas", "PPL Corporation", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "AES",
+    "name_variants": ["AES", "Utility", "Energy", "Electric", "Renewable", "AES Corporation", "Electric Utility", "Energy Company", "Renewable Energy"]
+  },
+  {
+    "ticker": "NRG",
+    "name_variants": ["NRG Energy", "NRG", "Utility", "Energy", "Electric", "Renewable", "NRG Energy Inc", "Electric Utility", "Energy Company", "Renewable Energy"]
+  },
+  {
+    "ticker": "PCG",
+    "name_variants": ["PG&E", "PCG", "Utility", "Energy", "Electric", "Gas", "PG&E Corporation", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "ETR",
+    "name_variants": ["Entergy", "ETR", "Utility", "Energy", "Electric", "Nuclear", "Entergy Corporation", "Electric Utility", "Energy Company", "Nuclear Power"]
+  },
+  {
+    "ticker": "DTE",
+    "name_variants": ["DTE Energy", "DTE", "Utility", "Energy", "Electric", "Gas", "DTE Energy Company", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "AWK",
+    "name_variants": ["American Water", "AWK", "Utility", "Water", "Wastewater", "American Water Works Company", "Water Utility", "Utility Company", "Water Services"]
+  },
+  {
+    "ticker": "WTRG",
+    "name_variants": ["Essential Utilities", "WTRG", "Utility", "Water", "Gas", "Essential Utilities Inc", "Water Utility", "Gas Utility", "Utility Company"]
+  },
+  {
+    "ticker": "ATO",
+    "name_variants": ["Atmos Energy", "ATO", "Utility", "Gas", "Natural Gas", "Atmos Energy Corporation", "Gas Utility", "Natural Gas Company", "Utility Company"]
+  },
+  {
+    "ticker": "CNP",
+    "name_variants": ["CenterPoint Energy", "CNP", "Utility", "Energy", "Electric", "Gas", "CenterPoint Energy Inc", "Electric Utility", "Gas Utility", "Utility Company"]
+  },
+  {
+    "ticker": "CMS",
+    "name_variants": ["CMS Energy", "CMS", "Utility", "Energy", "Electric", "Gas", "CMS Energy Corporation", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "LNT",
+    "name_variants": ["Alliant Energy", "LNT", "Utility", "Energy", "Electric", "Gas", "Alliant Energy Corporation", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "NI",
+    "name_variants": ["NiSource", "NI", "Utility", "Energy", "Electric", "Gas", "NiSource Inc", "Electric Utility", "Gas Utility", "Utility Company"]
+  },
+  {
+    "ticker": "PNW",
+    "name_variants": ["Pinnacle West", "PNW", "Utility", "Energy", "Electric", "Pinnacle West Capital Corporation", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "AEE",
+    "name_variants": ["Ameren", "AEE", "Utility", "Energy", "Electric", "Gas", "Ameren Corporation", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "ES",
+    "name_variants": ["Eversource Energy", "ES", "Utility", "Energy", "Electric", "Gas", "Eversource Energy", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "BKH",
+    "name_variants": ["Black Hills", "BKH", "Utility", "Energy", "Electric", "Gas", "Black Hills Corporation", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "OGE",
+    "name_variants": ["OGE Energy", "OGE", "Utility", "Energy", "Electric", "Gas", "OGE Energy Corp", "Electric Utility", "Energy Company", "Utility Company"]
+  },
+  {
+    "ticker": "NFG",
+    "name_variants": ["National Fuel Gas", "NFG", "Utility", "Gas", "Natural Gas", "National Fuel Gas Company", "Gas Utility", "Natural Gas Company", "Utility Company"]
+  },
+  {
+    "ticker": "SWX",
+    "name_variants": ["Southwest Gas", "SWX", "Utility", "Gas", "Natural Gas", "Southwest Gas Holdings", "Gas Utility", "Natural Gas Company", "Utility Company"]
+  },
+  {
+    "ticker": "NWN",
+    "name_variants": ["Northwest Natural", "NWN", "Utility", "Gas", "Natural Gas", "Northwest Natural Gas Company", "Gas Utility", "Natural Gas Company", "Utility Company"]
+  },
+  {
+    "ticker": "SR",
+    "name_variants": ["Spire", "SR", "Utility", "Gas", "Natural Gas", "Spire Inc", "Gas Utility", "Natural Gas Company", "Utility Company"]
+  },
+  {
+    "ticker": "UGI",
+    "name_variants": ["UGI", "Utility", "Gas", "Natural Gas", "Propane", "UGI Corporation", "Gas Utility", "Natural Gas Company", "Propane Company"]
+  },
+  {
+    "ticker": "NJR",
+    "name_variants": ["New Jersey Resources", "NJR", "Utility", "Gas", "Natural Gas", "New Jersey Resources Corporation", "Gas Utility", "Natural Gas Company", "Utility Company"]
+  },
+  {
+    "ticker": "CPK",
+    "name_variants": ["Chesapeake Utilities", "CPK", "Utility", "Gas", "Natural Gas", "Chesapeake Utilities Corporation", "Gas Utility", "Natural Gas Company", "Utility Company"]
+  },
+  {
+    "ticker": "SJW",
+    "name_variants": ["SJW Group", "SJW", "Utility", "Water", "Wastewater", "SJW Group", "Water Utility", "Utility Company", "Water Services"]
+  },
+  {
+    "ticker": "AWR",
+    "name_variants": ["American States Water", "AWR", "Utility", "Water", "Wastewater", "American States Water Company", "Water Utility", "Utility Company", "Water Services"]
+  },
+  {
+    "ticker": "MSEX",
+    "name_variants": ["Middlesex Water", "MSEX", "Utility", "Water", "Wastewater", "Middlesex Water Company", "Water Utility", "Utility Company", "Water Services"]
+  },
+  {
+    "ticker": "ARTNA",
+    "name_variants": ["Artesian Resources", "ARTNA", "Utility", "Water", "Wastewater", "Artesian Resources Corporation", "Water Utility", "Utility Company", "Water Services"]
+  },
+  {
+    "ticker": "YORW",
+    "name_variants": ["York Water", "YORW", "Utility", "Water", "Wastewater", "York Water Company", "Water Utility", "Utility Company", "Water Services"]
+  },
+  {
+    "ticker": "CWCO",
+    "name_variants": ["Consolidated Water", "CWCO", "Utility", "Water", "Wastewater", "Consolidated Water Co. Ltd.", "Water Utility", "Utility Company", "Water Services"]
+  }
+] 

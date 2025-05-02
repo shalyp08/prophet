@@ -7,28 +7,33 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate": "tsx autoGenerate.ts",
-    "resolve": "tsx resolveProphet.ts",
-    "setup": "tsx setup.ts"
+    "generate": "ts-node scripts/autoGenerate.ts",
+    "fetch": "ts-node scripts/fetchHeadlines.ts",
+    "resolve": "ts-node scripts/resolvePredictions.ts"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.8.7",
     "@supabase/supabase-js": "^2.39.3",
     "dotenv": "^16.3.1",
-    "next": "^14.1.0",
+    "next": "14.1.0",
     "node-fetch": "^3.3.2",
-    "rss-parser": "^3.13.0",
+    "openai": "^4.28.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "rss-parser": "^3.13.0",
+    "swr": "^2.3.3",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0",
-    "@types/node-fetch": "^2.6.11",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
+    "@types/node": "^20.11.19",
+    "@types/node-fetch": "^2.6.12",
+    "@types/react": "^18.2.57",
+    "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.17",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.1.0",
     "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.2",
-    "tsx": "^4.6.5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   }
 }

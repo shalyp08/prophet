@@ -1,0 +1,82 @@
+[
+  {
+    "ticker": "AAPL",
+    "name_variants": ["Apple", "AAPL", "Apple Inc.", "iPhone", "Mac", "iPad", "iOS", "App Store"]
+  },
+  {
+    "ticker": "MSFT",
+    "name_variants": ["Microsoft", "MSFT", "Microsoft Corp", "Windows", "Azure", "Xbox", "Office", "Teams"]
+  },
+  {
+    "ticker": "AMZN",
+    "name_variants": ["Amazon", "AMZN", "Amazon.com", "AWS", "Prime", "Alexa", "Echo", "Whole Foods"]
+  },
+  {
+    "ticker": "GOOGL",
+    "name_variants": ["Google", "GOOGL", "Alphabet", "YouTube", "Search", "Android", "Chrome", "Pixel"]
+  },
+  {
+    "ticker": "META",
+    "name_variants": ["Meta", "META", "Facebook", "Instagram", "WhatsApp", "Oculus", "Reels", "Threads"]
+  },
+  {
+    "ticker": "TSLA",
+    "name_variants": ["Tesla", "TSLA", "Elon Musk", "Model 3", "Model Y", "Cybertruck", "Gigafactory"]
+  },
+  {
+    "ticker": "NVDA",
+    "name_variants": ["NVIDIA", "NVDA", "GPU", "AI chips", "Graphics", "CUDA", "RTX", "DLSS"]
+  },
+  {
+    "ticker": "JPM",
+    "name_variants": ["JPMorgan", "JPM", "Chase", "Bank", "Financial", "Jamie Dimon", "Investment"]
+  },
+  {
+    "ticker": "V",
+    "name_variants": ["Visa", "V", "Credit card", "Payment", "Debit", "Fintech", "Digital wallet"]
+  },
+  {
+    "ticker": "WMT",
+    "name_variants": ["Walmart", "WMT", "Retail", "Store", "Sam's Club", "Walmart+", "E-commerce"]
+  },
+  {
+    "ticker": "JNJ",
+    "name_variants": ["Johnson & Johnson", "JNJ", "Pharmaceutical", "Healthcare", "Medical", "Vaccine"]
+  },
+  {
+    "ticker": "PG",
+    "name_variants": ["Procter & Gamble", "PG", "Consumer goods", "Pampers", "Tide", "Gillette"]
+  },
+  {
+    "ticker": "HD",
+    "name_variants": ["Home Depot", "HD", "Hardware", "Home improvement", "DIY", "Contractor"]
+  },
+  {
+    "ticker": "BAC",
+    "name_variants": ["Bank of America", "BAC", "Banking", "Financial", "Merrill Lynch", "Credit"]
+  },
+  {
+    "ticker": "MA",
+    "name_variants": ["Mastercard", "MA", "Credit card", "Payment", "Fintech", "Digital payment"]
+  },
+  {
+    "ticker": "DIS",
+    "name_variants": ["Disney", "DIS", "Entertainment", "ESPN", "Marvel", "Star Wars", "Parks"]
+  },
+  {
+    "ticker": "KO",
+    "name_variants": ["Coca-Cola", "KO", "Beverage", "Drink", "Soda", "Fanta", "Sprite"]
+  },
+  {
+    "ticker": "PEP",
+    "name_variants": ["PepsiCo", "PEP", "Beverage", "Frito-Lay", "Gatorade", "Quaker", "Snacks"]
+  },
+  {
+    "ticker": "CSCO",
+    "name_variants": ["Cisco", "CSCO", "Networking", "Technology", "Webex", "Security", "Routers"]
+  },
+  {
+    "ticker": "INTC",
+    "name_variants": ["Intel", "INTC", "Chip", "Processor", "CPU", "Semiconductor", "Foundry"]
+  }
+] 
