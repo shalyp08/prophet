@@ -6,135 +6,88 @@ import OpenAI from 'openai';
 import fetch from 'node-fetch';
 import { createClient } from '@supabase/supabase-js';
 
+// Set up Supabase
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Set up OpenAI
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// Initialize RSS parser
+// Set up RSS Parser
 const parser = new Parser();
-
-// Constants
 const FEED_URL = 'https://feeds.finance.yahoo.com/rss/2.0/headline?s=^GSPC&region=US&lang=en-US';
-const DUMMY_SPY_VALUE = 500;
 
-async function fetchLatestHeadline(): Promise<string> {
-  try {
-    const feed = await parser.parseURL(FEED_URL);
-    if (!feed.items || feed.items.length === 0) {
-      throw new Error('No headlines found in feed');
-    }
-    return feed.items[0].title || '';
-  } catch (error) {
-    console.error('❌ Error fetching headline:', error);
-    throw error;
-  }
+async function fetchHeadline() {
+  const feed = await parser.parseURL(FEED_URL);
+  return feed.items?.[0]?.title || '';
 }
 
-async function generateNarratives(headline: string) {
-  const prompt = `Respond ONLY with valid JSON using this schema:
+async function generateNarrative(headline: string) {
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4',
+    messages: [
+      {
+        role: 'user',
+        content: `Based on this headline: "${headline}", generate:
+- A bullish narrative with expected SPY % move
+- A neutral narrative
+- A bearish narrative with expected SPY % move
+- A suggested resolution time in ISO 8601 timestamp format like "2025-05-02T20:00:00Z"
 
+Respond ONLY in valid JSON like:
 {
-  "bullish": "string",
-  "neutral": "string",
-  "bearish": "string",
+  "bullish": "...",
+  "neutral": "...",
+  "bearish": "...",
   "bullish_pct": 2.0,
   "bearish_pct": -2.0,
-  "resolution_time": "EOD next trading day"
-}
-
-Do NOT add any explanation or commentary. Just return valid JSON.
-
-Headline: "${headline}"
-`;
-
-  const response = await openai.chat.completions.create({
-    model: "gpt-4",
-    temperature: 0.5,
-    messages: [
-      { role: "system", content: "You are a financial analyst. Always respond with strict JSON only." },
-      { role: "user", content: prompt }
-    ]
+  "resolution_time": "2025-05-02T20:00:00Z"
+}`
+      }
+    ],
+    temperature: 0.7
   });
 
-  const raw = response.choices[0]?.message?.content?.trim();
-  console.log("📝 Raw GPT response:", raw);
-
-  const jsonMatch = raw?.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) {
-    throw new Error("❌ GPT did not return a JSON object");
-  }
+  const text = response.choices[0]?.message?.content;
+  console.log("📝 Raw GPT response:", text);
 
   try {
-    const parsed = JSON.parse(jsonMatch[0]);
-
-    // Convert "EOD next trading day" into a real timestamp
-    if (parsed.resolution_time === "EOD next trading day") {
-      const now = new Date();
-      const nextDay = new Date(now);
-      nextDay.setDate(now.getDate() + 1);
-      nextDay.setUTCHours(20, 0, 0, 0); // 4pm ET = 8pm UTC
-      parsed.resolution_time = nextDay.toISOString();
-    }
-
-    return parsed;
-  } catch (e) {
-    console.error("❌ Failed to parse GPT output as JSON");
-    console.error("🧪 Raw text:", raw);
-    throw e;
+    return JSON.parse(text || '');
+  } catch (err) {
+    console.error("❌ Failed to parse GPT response:", err);
+    return null;
   }
 }
 
-async function insertIntoDatabase(headline: string, narratives: any) {
-  try {
-    const { error } = await supabase
-      .from('prophet')
-      .insert({
-        headline,
-        bullish: narratives.bullish,
-        neutral: narratives.neutral,
-        bearish: narratives.bearish,
-        bullish_pct: narratives.bullish_pct,
-        bearish_pct: narratives.bearish_pct,
-        resolution_time: narratives.resolution_time,
-        spy_at_start: DUMMY_SPY_VALUE
-      });
+async function storeInSupabase(data: any, headline: string) {
+  const { error } = await supabase.from('prophet').insert({
+    headline,
+    ...data,
+    spy_at_start: 500
+  });
 
-    if (error) {
-      throw error;
-    }
-
-    console.log('✅ Successfully inserted into database');
-  } catch (error) {
-    console.error('❌ Error inserting into database:', error);
-    throw error;
+  if (error) {
+    console.error("❌ Error inserting into database:", error);
+  } else {
+    console.log("✅ Successfully inserted into Supabase!");
   }
 }
 
 async function main() {
-  try {
-    console.log('🚀 Starting autoGenerate script...');
-    
-    // Fetch latest headline
-    const headline = await fetchLatestHeadline();
-    console.log('📰 Latest headline:', headline);
-    
-    // Generate narratives
-    const narratives = await generateNarratives(headline);
-    console.log('📊 Generated narratives:', narratives);
-    
-    // Insert into database
-    await insertIntoDatabase(headline, narratives);
-    
-    console.log('✨ Script completed successfully!');
-  } catch (error) {
-    console.error('❌ Script failed:', error);
-    process.exit(1);
+  console.log("🚀 Starting autoGenerate script...");
+
+  const headline = await fetchHeadline();
+  console.log("📰 Latest headline:", headline);
+
+  const narratives = await generateNarrative(headline);
+  if (narratives) {
+    console.log("📊 Generated narratives:", narratives);
+    await storeInSupabase(narratives, headline);
+  } else {
+    console.error("❌ No narratives to store.");
   }
 }
 
-main(); 
+main();
